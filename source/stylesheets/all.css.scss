@@ -1,0 +1,71 @@
+@import "bourbon/bourbon";
+@import "neat/neat";
+
+body {
+  margin: 2em;
+}
+
+
+////////////////////////////////////
+
+.box {
+  background: transparentize(silver, .3);
+  padding: 1em;
+  margin-bottom: .2em;
+  color: white;
+  font-size: 1.5em;
+}
+
+.static {
+  background: transparentize(tomato, .3);
+  position: static;
+}
+
+.relative {
+  background: transparentize(teal, .3);
+  position: relative;
+}
+
+.absolute {
+  background: transparentize(green, .3);
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+////////////////////////////////////
+
+// Show this without bourbon first then show the benefit of using includes
+
+.flexbox-container {
+  @include display(flex);
+  @include justify-content(center);
+  @include align-items(stretch);
+  @include flex-wrap(wrap);
+  text-align: center;
+}
+
+// First just show simple child behavior of flex elements
+
+.flexbox {
+  @include align-self(stretch);
+  @include flex-basis(500px); // It wants to be this size. If it's smaller there will be a line wrap (as long as the container is set to wrap).
+  font-weight: 800;  
+  color: white;
+  background: gray;
+  margin: .2em;
+  padding: 2em;
+}
+
+// Then show a different type of child. One that's OK with growing.
+
+// .flexbox-1 {
+//   @include flex-grow(1); // If it gets BIGGER than it wants to be it's OK with growing to let other elements reach their goals.
+//   background: teal;
+// }
+
+// .flexbox-2 {
+//   @include flex-shrink(2); // If it gets SMALLER than it wants to be, it's OK with shrinking to let other elements reach their goals.
+//   @include flex-grow(1);
+//   background: tomato;
+// }
